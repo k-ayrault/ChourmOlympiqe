@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qui Suis-Je ? - ChourmOlympiqe{% endblock %}
+
+{% block body %}
+
+    <div class="bg-dark text-white" style="min-width: 100vw; min-height: 100vh">
+        <div class="container pt-5 d-flex flex-column ">
+            <div class="align-self-center mb-5">
+                <h1 class="fw-bold text-shadow-white">Qui Suis-Je ?</h1>
+            </div>
+            <div class="align-self-center mb-5">
+                <p class="h4">Le principe est simple, retrouver le joueur selon les différents clubs de sa carrière.</p>
+            </div>
+            <div class="row featurette align-self-center justify-content-center align-items-center" style="width: 500px">
+                <div class="d-grid gap-2 ps-5 pe-5" style="width: 100%">
+                    <a class="btn btn-light" href="{{ path('app_qui_suis_je_start') }}">Jouer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

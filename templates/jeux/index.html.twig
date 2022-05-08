@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeux - ChourmOlympique{% endblock %}
+
+{% block body %}
+    <div class="bg-dark text-white" style="min-width: 100vw; min-height: 100vh">
+        <div class="container pt-5 d-flex flex-column ">
+            <div class="align-self-center mb-5">
+                <h1 class="fw-bold text-shadow-white">Jeux</h1>
+            </div>
+            <div class="row featurette align-self-center justify-content-center align-items-center" style="min-width: 500px">
+                <div class="col-md-5 d-flex flex-column">
+                    <h4 class="featurette-heading align-self-center">Qui suis-je ?</h4>
+                    <p class="text-justify mt-3">Le principe est simple, retrouver le joueur selon les différents clubs de sa carrière.</p>
+                </div>
+                <div class="col-md-5 d-flex flex-column align-items-center">
+                    <i class="fa fa-clipboard-question h1"></i>
+                    <div class="d-grid gap-2 ps-5 pe-5" style="width: 100%">
+                        <a class="btn btn-light" href="{{ path('app_qui_suis_je') }}">Jouer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
