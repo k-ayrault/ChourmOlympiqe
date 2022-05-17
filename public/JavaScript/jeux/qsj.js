@@ -95,10 +95,10 @@ let modal_abandon = new bootstrap.Modal('#modal_abandon', {
 //----------------------------------------------------------------------------------------------------------------------
 //  Début de la partie
 //----------------------------------------------------------------------------------------------------------------------
+chargementPartie();
 document.addEventListener("DOMContentLoaded", () => {
     recherche_joueur.value = "";
     if (!id_utilisateur) {
-        chargementPartie();
         commencerJeu();
     } else {
         message_erreur = "Veuillez raffraichir la page s'il vous plaît !"
