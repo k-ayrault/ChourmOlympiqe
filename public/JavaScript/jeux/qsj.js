@@ -1,11 +1,11 @@
 //----------------------------------------------------------------------------------------------------------------------
 //  Routes API
 //----------------------------------------------------------------------------------------------------------------------
-const START_API = "http://api.chourmolympique.fr/api/qsj/start";
-const ESSAI_API = "http://api.chourmolympique.fr/api/qsj/essai";
-const INDICE_API = "http://api.chourmolympique.fr/api/qsj/indice";
-const JOUEUR_SAISI_API = "http://api.chourmolympique.fr/api/qsj/joueur_saisi";
-const ABANDON_API = "http://api.chourmolympique.fr/api/qsj/abandon";
+const START_API = "https://api.chourmolympique.fr/api/qsj/start";
+const ESSAI_API = "https://api.chourmolympique.fr/api/qsj/essai";
+const INDICE_API = "https://api.chourmolympique.fr/api/qsj/indice";
+const JOUEUR_SAISI_API = "https://api.chourmolympique.fr/api/qsj/joueur_saisi";
+const ABANDON_API = "https://api.chourmolympique.fr/api/qsj/abandon";
 
 //----------------------------------------------------------------------------------------------------------------------
 //  Clés réponses API
