@@ -24,7 +24,7 @@ class QuiSuisJeController extends AbstractController
      */
     public function start(): Response
     {
-        return $this->render('/jeux/qui_suis_je/index.html.twig', [
+        return $this->render('/jeux/qui_suis_je/start.html.twig', [
             'controller_name' => 'QuiSuisJeController',
         ]);
     }

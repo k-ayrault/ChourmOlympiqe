@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Qui Suis-Je ? - ChourmOlympiqe{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/CSS/jeux/jeux.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="bg-dark text-white" style="min-width: 100vw; min-height: 100vh; overflow: hidden">
+        <div class="container d-flex flex-column position-relative" style="width: 500px; max-height: 100vh">
+            <div class="position-absolute top-0 end-0 d-flex">
+                <button class="btn btn-dark d-flex align-items-center justify-content-center"
+                        style="width: 2em; height: 2em; margin-top: 5vh;" onclick="window.location = {{ path('app_jeux') }}" title="Retourner au menu des jeux"><i class="fa fa-home"></i></button>
+                <button class=" ms-2 btn btn-dark d-flex align-items-center justify-content-center" id="btn_abandon"
+                        style="width: 2em; height: 2em; margin-top: 5vh;" title="Abandonner"><i class="fa fa-flag"></i></button>
+
+            </div>
+            <div class="align-self-center d-flex align-items-center" style="height: 5vh; margin-top: 5vh;">
+                <h1 class="fw-bold text-shadow-white">Qui Suis-Je ?</h1>
+            </div>
+            <div class="align-self-center d-flex justify-content-end align-items-end" style="height: 5vh; width: 100%">
+                <p class="m-1">Prochain indice : <strong id="secondes_avant_indice">30</strong> s</p>
+            </div>
+            <div class="align-self-center" style="height: 60vh; width: 100%">
+                <table class=" table table-dark table-striped" style="width: 100%">
+                    <tbody id="conteneur_contrats">
+                    </tbody>
+                </table>
+            </div>
+            <div class="row featurette align-self-center justify-content-center align-items-center"
+                 style="height: 25vh;width: 100%">
+                <div class="d-grid gap-2 ps-5 pe-5" style="width: 100%; height: 25vh;">
+                    <div>
+                        <input class="form-control bg-secondary border-0 text-white" list="datalist_joueurs"
+                               id="recherche_joueur"
+                               placeholder="Type to search..." style="height: 5vh">
+                        <div style="height: 15vh; overflow-y: auto; ">
+                            <table class="table table-dark table-striped">
+                                <tbody id="conteneur_joueurs">
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id="template_contrat">
+        <tr style="width: 3vh">
+            <th class="dates"></th>
+            <td class="d-flex align-items-center club">
+                <img style="max-height: 3vh" class="me-1 img_club">
+                <p class="nom_club p-0 m-0"></p>
+            </td>
+            <td class="details"></td>
+        </tr>
+    </template>
+
+    <template id="template_recherche_joueur">
+        <tr>
+            <td class="d-flex align-items-center ps-3">
+                <img src="https://www.ligue1.fr/-/media/Project/LFP/shared/Images/Players/2021-2022/57/62557.jpg"
+                     alt="GUENDOUZ'" class="pe-3 img_joueur" style="max-height: 3.5em;">
+                <p class="nom_joueur"></p>
+            </td>
+        </tr>
+    </template>
+
+    <template id="template_chargement_partie">
+        <div class="chargement_partie" id="chargement_partie">
+            <div style="width: 100%; height: 100%" class="d-flex align-items-center justify-content-center">
+                <i class="loader"></i>
+            </div>
+        </div>
+    </template>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_win" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-secondary bg-dark">
+                    <h5 class="modal-title text-white">Bien joué !!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-dark">
+                    <div style="width:100%;height:0;padding-bottom:100%;position:relative;">
+                        <iframe src="https://giphy.com/embed/XXxF56aKzbZWhntIy6" width="100%" height="100%"
+                                style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary bg-dark">
+                    <button type="button" class="btn btn-outline-light"
+                            onclick="window.location.href = {{ path('app_jeux') }}">Retour à l'accueil
+                    </button>
+                    <button type="button" class="btn btn-outline-light" onclick="window.location.reload()">Rejouer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_lose" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-secondary bg-dark">
+                    <h5 class="modal-title text-white">Pour marquer il faut tirer, mais c'est pas ce qu'on a vue !
+                        Essaye encore !</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-dark">
+                    <div style="width:100%;height:0;padding-bottom:100%;position:relative;">
+                        <iframe src="https://giphy.com/embed/fzgv5RQdUX4cnE91Zq" width="100%" height="100%"
+                                style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_erreur" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-secondary bg-dark">
+                    <h5 class="modal-title text-white">Une erreur est parvenue !</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-dark" id="message_erreur">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_abandon" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-secondary bg-dark">
+                    <h5 class="modal-title text-white">Pas comme ça, pas maintenant, pas après tout ce que tu as fait !</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-dark text-white">
+                    <img id="img_joueur_abandon" src="" alt="" style="max-height: 10em;">&nbsp;Il s'agissait de <strong id="nom_joueur_abandon"></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JavaScript/jeux/qsj.js"></script>
+
+{% endblock %}
