@@ -63,3 +63,11 @@
         transform: translateY(100%);
     }
 }
+
+.alert-perdu {
+    width: 350px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 3em;
+}

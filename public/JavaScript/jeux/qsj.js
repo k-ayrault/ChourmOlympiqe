@@ -82,9 +82,6 @@ let all_indice = false;
 let modal_win = new bootstrap.Modal('#modal_win', {
     keyboard: false
 });
-let modal_lose = new bootstrap.Modal('#modal_lose', {
-    keyboard: false
-});
 let modal_erreur = new bootstrap.Modal('#modal_erreur', {
     keyboard: false
 });
@@ -92,11 +89,14 @@ let modal_abandon = new bootstrap.Modal('#modal_abandon', {
     keyboard: false
 });
 
+// modal_abandon.
+
 //----------------------------------------------------------------------------------------------------------------------
 //  Début de la partie
 //----------------------------------------------------------------------------------------------------------------------
 chargementPartie();
 document.addEventListener("DOMContentLoaded", () => {
+    recherche_joueur.focus();
     recherche_joueur.value = "";
     if (!id_utilisateur) {
         commencerJeu();
@@ -191,6 +191,7 @@ function remplitDataList() {
  *  et trraite les informations selon la réponse de cette dernière
  * @param id : id_joueur_testé
  */
+let alert_perdu = document.getElementById("alert-perdu");
 function essaieJoueur(id) {
     let data = new FormData();
     data.append(ID_UTILISATEUR_REQUETE, id_utilisateur);
@@ -206,7 +207,10 @@ function essaieJoueur(id) {
             if (reponse[BOOL_RESULTAT_REPONSE]) {
                 modal_win.toggle();
             } else {
-                modal_lose.toggle();
+                alert_perdu.classList.add('show');
+                setTimeout(() => {
+                    alert_perdu.classList.remove('show');
+                }, 3000)
             }
         }
     });
@@ -303,3 +307,8 @@ function abandon() {
     })
 
 }
+
+let btn_replay = document.getElementById("btn_replay");
+btn_replay.addEventListener("click", () => {
+    window.location.reload();
+});
