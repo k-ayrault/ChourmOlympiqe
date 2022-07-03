@@ -5,14 +5,27 @@
 {% block body %}
 
     <div class="bg-dark text-white" style="min-width: 100vw; min-height: 100vh">
-        <div class="container d-flex flex-column " style="width: 500px">
+        <div class="container d-flex flex-column container-jeu">
+
             <div class="align-self-center" style="height: 10vh; margin-top: 5vh;">
                 <h1 class="fw-bold text-shadow-white">Qui Suis-Je ?</h1>
             </div>
-            <div class="align-self-center mb-5">
-                <p class="h4 text-justify">Le principe est simple, retrouver le joueur selon les différents clubs de sa carrière.</p>
+
+            <div class="col-md-5 d-flex flex-column container">
+                <p class="text-justify mt-3">
+                    Le but du jeu ? Retrouver le joueur selon les différents clubs de sa carrière !
+                    <br>
+                    <br>
+                    Un différents nombre de ligne, correspondant aux différents clubs du joueur à deviner s'affiche.
+                    <br>
+                    <br>
+                    Toutes les 30 secondes un nouveau club apparaitra.
+                    <br>
+                    <br>
+                    <strong class="h4 fw-bold">Bonne chance !</strong>
+                </p>
             </div>
-            <div class="row featurette align-self-center justify-content-center align-items-center" style="width: 500px">
+            <div class="col-12 col-sm-8 col-md-5 col-lg-3 align-self-center d-flex flex-column align-items-center mt-3">
                 <div class="d-grid gap-2 ps-5 pe-5" style="width: 100%">
                     <a class="btn btn-light" href="{{ path('app_qui_suis_je_start') }}">Jouer</a>
                 </div>

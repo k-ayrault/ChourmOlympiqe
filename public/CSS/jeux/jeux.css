@@ -88,6 +88,10 @@
     margin-right: 3em;
 }
 
+.icone-in-game {
+
+}
+
 @media screen and (max-width: 500px) {
 
     .container-jeu {
@@ -102,6 +106,17 @@
     .alert-perdu {
         width: 75%;
         margin-right: 5%;
+    }
+
+    .button-play {
+        width: 50vw;
+    }
+}
+
+@media screen and (max-height: 500px) {
+
+    .icone-in-game {
+        margin-top: 0!important;
     }
 }
 

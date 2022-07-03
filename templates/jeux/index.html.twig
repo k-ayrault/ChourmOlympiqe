@@ -2,13 +2,17 @@
 
 {% block title %}Jeux - ChourmOlympique{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/CSS/jeux/jeux.css">
+{% endblock %}
+
 {% block body %}
     <div class="bg-dark text-white" style="min-width: 100vw; min-height: 100vh">
         <div class="container pt-5 d-flex flex-column ">
             <div class="align-self-center mb-5">
                 <h1 class="fw-bold text-shadow-white">Jeux</h1>
             </div>
-            <div class="row featurette align-self-center justify-content-center align-items-center" style="min-width: 500px">
+            <div class="row featurette align-self-center justify-content-center align-items-center container-jeu">
                 <div class="col-md-5 d-flex flex-column">
                     <h4 class="featurette-heading align-self-center">Qui suis-je ?</h4>
                     <p class="text-justify mt-3">Le principe est simple, retrouver le joueur selon les différents clubs de sa carrière.</p>
