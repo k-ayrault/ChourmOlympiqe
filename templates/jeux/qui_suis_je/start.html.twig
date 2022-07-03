@@ -9,8 +9,8 @@
 
 {% block body %}
 
-    <div class="bg-dark text-white" style="min-width: 100vw; min-height: 100vh; overflow: hidden">
-        <div class="container d-flex flex-column position-relative" style="width: 500px; max-height: 100vh">
+    <div class="bg-dark text-white body-jeu">
+        <div class="container d-flex flex-column position-relative container-jeu">
             <div class="position-absolute top-0 end-0 d-flex">
                 <button class="btn btn-dark d-flex align-items-center justify-content-center"
                         style="width: 2em; height: 2em; margin-top: 5vh;" onclick="window.location = {{ path('app_jeux') }}" title="Retourner au menu des jeux"><i class="fa fa-home"></i></button>
@@ -21,7 +21,7 @@
 
 
             </div>
-            <div class="align-self-center d-flex align-items-center" style="height: 5vh; margin-top: 5vh;">
+            <div class="align-self-center d-flex align-items-center titre-jeu">
                 <h1 class="fw-bold text-shadow-white">Qui Suis-Je ?</h1>
             </div>
             <div class="align-self-center d-flex justify-content-end align-items-end" style="height: 5vh; width: 100%">

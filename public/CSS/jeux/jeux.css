@@ -5,7 +5,7 @@
     background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
     z-index: 1;
     position: absolute;
-    top : 0;
+    top: 0;
 }
 
 .body_chargement_partie {
@@ -64,6 +64,22 @@
     }
 }
 
+.body-jeu {
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden
+}
+
+.container-jeu {
+    width: 500px;
+    max-height: 100vh
+}
+
+.titre-jeu {
+    height: 5vh;
+    margin-top: 5vh;
+}
+
 .alert-perdu {
     width: 350px;
     position: absolute;
@@ -71,3 +87,21 @@
     right: 0;
     margin-right: 3em;
 }
+
+@media screen and (max-width: 500px) {
+
+    .container-jeu {
+        width: 100vw;
+        max-height: 100vh
+    }
+
+    .titre-jeu {
+        align-self: start!important;
+    }
+
+    .alert-perdu {
+        width: 75%;
+        margin-right: 5%;
+    }
+}
+
